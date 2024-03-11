@@ -1,0 +1,123 @@
+---
+import { TfiNewWindow } from 'react-icons/tfi';
+import { FaGithub } from 'react-icons/fa';
+
+const techStyles: any = {
+   HTML: 'border-red-500 text-red-500',
+   CSS: 'border-cyan-500 text-cyan-500',
+   JAVASCRIPT: 'border-yellow-500 text-yellow-500',
+   TYPESCRIPT: 'border-blue-500 text-blue-500',
+   REACT: 'border-sky-500 text-sky-500',
+   'NEXT JS': 'border-white text-white',
+   ASTRO: 'border-purple-500 text-purple-500',
+   'NODE JS': 'border-green-500 text-green-500',
+   EXPRESS: 'border-lime-500 text-lime-500',
+   'NEST JS': 'border-red-500 text-red-500',
+   POSTGRESQL: 'border-cyan-400 text-cyan-400',
+   'MONGO DB': 'border-emerald-500 text-emerald-500',
+   BOOTSTRAP: 'border-fuchsia-500 text-fuchsia-500',
+   TAILWIND: 'border-cyan-500 text-cyan-500',
+   REDUX: 'border-amber-500 text-amber-500',
+};
+
+interface Projects {
+   title: string;
+   description: string;
+   image: string;
+   link: string;
+   github: string;
+   technologies: string[];
+}
+
+const projects: Projects[] = [
+   {
+      title: 'Csgo App',
+      description:
+         'Aplicación web desarrollada con react y redux, inspirada en el juego Counter Strike la cual muestra la información sobre cada arma y mapa del juego. Las armas tienen un cargador interactivo con sonido reales de cada arma, adicionalmente cuenta con una lista de "Favoritos" la cual utiliza Redux como manejador de estado global.',
+      image: '../../public/assets/csgo-app.webp',
+      link: 'https://app-csgo.vercel.app/',
+      github: 'https://github.com/jullaltamirano/app-csgo-hw',
+      technologies: ['JAVASCRIPT', 'REACT', 'REDUX', 'TAILWIND'],
+   },
+   {
+      title: 'Reaction Game App',
+      description: 'Juego desarrollado con Html, css y javascript vanilla para medir la reacción medida en ms, cuenta con un "Lowest Time" que te muestra el mejor tiempo en la sesión, el juego maneja errores al intentar clickear antes de tiempo.',
+      image: '../../public/assets/reaction-app.webp',
+      link: 'https://reaction-app.vercel.app/',
+      github: 'https://github.com/jullaltamirano/reaction-app',
+      technologies: ['HTML', 'CSS', 'JAVASCRIPT'],
+   },
+   {
+      title: 'El Point Carwash + API',
+      description:
+         'Sitio web de un Carwash desarrollado con "Next js", muestra información del negocio, membresias, servicios. Se encuentra conectado a una API propia desarrollada con "Nest js" y "PostgreSQL", la cual dentro de sus principales funciones cuenta con autenticación de usuarios a través de JWT y maneja la lógica de compra de membresias conectada a la API de una pasarela de pagos externa. ',
+      image: '../../public/assets/elpoint-carwash.webp',
+      link: 'https://www.elpointcarwash.com',
+      github: '',
+      technologies: ['TYPESCRIPT', 'NEXT JS', 'TAILWIND', 'NEST JS', 'POSTGRESQL'],
+   },
+   {
+      title: 'Pokemon App + API',
+      description:
+         'Aplicación web desarrollada con React y Redux, se encuentra conectada a una API propia desarrollada con "Express" y "PostgreSQL" la cual hace peticiones asíncronas a la API oficial de Pokémon, tiene un listado de pokemones, una busqueda asíncrona de un pokemon o id específico y cuenta con la opción de poder crear un pokémon personalizado',
+      image: '../../public/assets/pokemon-api.webp',
+      link: '',
+      github: 'https://github.com/jullaltamirano/proyectoPokemon',
+      technologies: ['JAVASCRIPT', 'CSS', 'REACT', 'REDUX', 'EXPRESS', 'POSTGRESQL'],
+   },
+];
+---
+
+<section id='proyectos'>
+   <div class='flex flex-col justify-center items-center px-8 py-14 md:px-32 sm:py-20 sm:px-16'>
+      <h2 class='text-zinc-100 font-bold text-4xl mb-14'>PROYECTOS</h2>
+      <div class='grid grid-cols-2 gap-8 lg:gap-14 w-full'>
+         {
+            projects.map((pro) => (
+               <div class='col-span-2 lg:col-span-1 rounded-xl bg-zinc-800 w-full'>
+                  <div class='group relative'>
+                     <img
+                        class='relative rounded-tl-xl rounded-tr-xl'
+                        src={pro.image}
+                        alt={pro.title}
+                     />
+                     <a
+                        href={pro.link}
+                        target='_blank'
+                        class='flex justify-center items-center absolute top-0 w-full h-full bg-black bg-opacity-50 rounded-tl-xl rounded-tr-xl opacity-0 transition duration-300 text-white font-semibold text-lg group-hover:opacity-100'>
+                        <TfiNewWindow className='mr-2' />
+                        Ver Demo
+                     </a>
+                  </div>
+                  <div class='p-4 sm:p-8 flex flex-col justify-between h-100'>
+                     <div class='flex flex-col'>
+                        <h4 class='text-white font-semibold text-green text-xl sm:text-2xl'>{pro.title}</h4>
+                        <p class='text-white mt-5 mb-10 text-sm sm:text-base'>{pro.description}</p>
+                     </div>
+
+                     <div class='flex flex-col'>
+                        <div class='flex mb-4 gap-2'>
+                           {pro.link && (
+                              <a href={pro.link}>
+                                 <TfiNewWindow className='text-white text-lg hover:scale-110 transition' />
+                              </a>
+                           )}
+                           {pro.github && (
+                              <a href={pro.github}>
+                                 <FaGithub className='text-white text-lg hover:scale-110 transition' />
+                              </a>
+                           )}
+                        </div>
+                        <div class='flex gap-3 flex-wrap'>
+                           {pro.technologies.map((tech) => (
+                              <span class={`rounded border text-xs px-2 ${techStyles[tech]}`}>{tech}</span>
+                           ))}
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            ))
+         }
+      </div>
+   </div>
+</section>

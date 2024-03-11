@@ -1,0 +1,21 @@
+---
+import Layout from '../layouts/Layout.astro';
+import About from '../sections/About.astro';
+import Habilities from '../sections/Habilities.jsx';
+import Projects from '../sections/Projects.astro';
+import Contact from '../sections/Contact.astro';
+---
+
+<Layout title='Portafolio - Jull Altamirano'>
+   <main>
+      <About />
+      <Habilities />
+      <Projects />
+      <!-- <Contact /> -->
+   </main>
+</Layout>
+<style is:global>
+   .text-green {
+      color: var(--main-color);
+   }
+</style>
