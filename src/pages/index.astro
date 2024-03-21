@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import About from '../sections/About.astro';
 import Habilities from '../sections/Habilities.jsx';
 import Projects from '../sections/Projects.astro';
-import Contact from '../sections/Contact.astro';
+import { Contact } from '../sections/Contact.jsx';
 ---
 
 <Layout title='Portafolio - Jull Altamirano'>
@@ -11,10 +11,14 @@ import Contact from '../sections/Contact.astro';
       <About />
       <Habilities />
       <Projects />
-      <Contact />
+      <Contact client:visible />
    </main>
 </Layout>
 <style is:global>
+   ::selection {
+      background-color: rgb(45, 212, 191);
+      color: #000;
+   }
    .text-green {
       color: var(--main-color);
    }

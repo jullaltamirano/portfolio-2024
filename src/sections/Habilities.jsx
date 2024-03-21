@@ -16,6 +16,7 @@ import { SiReactquery } from 'react-icons/si';
 import { SiRedux } from 'react-icons/si';
 import { FaGitAlt } from 'react-icons/fa';
 import { FaDocker } from 'react-icons/fa';
+import { DiJqueryLogo } from "react-icons/di";
 
 const techs = [
    { icon: (<FaHtml5 className='text-2xl' size={'1.5em'} />), name: 'HTML', },
@@ -34,6 +35,7 @@ const techs = [
    { icon: (<SiTailwindcss className='text-2xl' size={'1.5em'} />), name: 'Tailwind', },
    { icon: (<SiReactquery className='text-2xl' size={'1.5em'} />), name: 'Tanstack Query', },
    { icon: (<SiRedux className='text-2xl' size={'1.5em'} />), name: 'Redux', },
+   { icon: (<DiJqueryLogo className='text-2xl' size={'1.5em'} />), name: 'JQuery', },
    { icon: (<FaGitAlt className='text-2xl' size={'1.5em'} />), name: 'Git', },
    { icon: (<FaDocker className='text-2xl' size={'1.5em'} />), name: 'Docker', },
 ];
@@ -45,7 +47,7 @@ const Habilities = () => {
             <h2 className='text-zinc-100 font-bold text-3xl md:text-4xl mb-14'>HABILIDADES</h2>
             <div className='flex px-4 md:px-12 lg:px-44 gap-10 flex-wrap justify-center'>
                {techs.map((tech) => (
-                  <div className='flex flex-col items-center border-2 border-zinc-700 rounded-lg text-zinc-300 py-3 px-4'>
+                  <div className='flex flex-col items-center border-2 border-zinc-700 rounded-lg text-zinc-300 py-3 px-4 transition-all hover:scale-110 hover:text-teal-400 hover:border-teal-400'>
                      {tech.icon}
                      <span className='text-sm font-thin mt-1'>{tech.name}</span>
                   </div>

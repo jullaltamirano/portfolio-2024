@@ -4,13 +4,17 @@ import AboutBgSvg from '../components/index/AboutBgSvg.astro';
 import { FaGithub } from 'react-icons/fa';
 import { FaLinkedin } from 'react-icons/fa';
 import { IoLogoWhatsapp } from 'react-icons/io';
+
+const name = 'JULL_ALTAMIRANO';
 ---
 
 <section>
    <div class='grid grid-cols-2 py-14 sm:py-28 lg:py-0'>
       <div class='flex flex-col justify-center col-span-2 px-8 sm:px-16 lg:col-span-1 lg:px-32 lg:pr-0'>
          <p class='text-zinc-100 font-thin mb-4'>Hola, soy</p>
-         <p class='text-zinc-100 font-black text-3xl sm:text-5xl'>JULL ALTAMIRANO</p>
+         <div class='flex'>
+            {name.split('').map((letter) => <span class='text-zinc-100 font-black text-3xl sm:text-5xl transition-all hover:scale-110 hover:text-teal-400'>{letter === '_' ? <span>&nbsp;</span> : letter}</span>)}
+         </div>
          <p class='text-zinc-100 font-semibold text-lg mb-4 sm:text-xl'>FULLSTACK DEVELOPER</p>
          <p class='text-zinc-100 font-thin'>Programador especializado en crear experiencias digitales. Actualmente enfocado en mejorar mis aptitudes y aprender nuevas en el proceso.</p>
          <div class='flex gap-5 mt-10'>
