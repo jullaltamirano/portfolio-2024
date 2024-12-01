@@ -21,97 +21,93 @@ const techStyles: any = {
 };
 
 interface Projects {
-   title: string;
-   description: string;
-   image: string;
-   link: string;
-   github: string;
-   technologies: string[];
+   title: string
+   description: string
+   year: number
+   status: string
+   image: string
+   link: string
+   github: string
+   technologies: string[]
 }
 
 const projects: Projects[] = [
    {
       title: 'El Point Carwash + API',
+      year: 2023,
+      status: 'Desarrollo',
       description:
          'Sitio web de un Carwash desarrollado con "Next js", muestra información del negocio, membresias, servicios. Se encuentra conectado a una API propia desarrollada con "Nest js" y "PostgreSQL", la cual dentro de sus principales funciones cuenta con autenticación de usuarios a través de JWT y maneja la lógica de compra de membresias conectada a la API de una pasarela de pagos externa. ',
-      image: 'https://i.ibb.co/1TygftB/Sin-t-tulo.webp',
+      image: '/ElPointCarwash.webp',
       link: 'https://qa--subtle-yeot-3a2315.netlify.app/',
       github: '',
       technologies: ['TYPESCRIPT', 'NEXT JS', 'TAILWIND', 'NEST JS', 'POSTGRESQL'],
    },
    {
-      title: 'Csgo App',
+      title: 'DecoFusion Store',
+      year: 2024,
+      status: 'Producción',
+      description:
+         `Ecommerce desarrollado con Astro, Typescript y Tailwind. Cuenta con un listado estático de productos, funcionalidad para añadir a WishList y Carro de compras, una calculadora de producto y opción de finalizar la compra vía Whatsapp`,
+      image: '/DecoFusionStore.webp',
+      link: 'https://www.decofusionstore.com/',
+      github: 'https://github.com/jullaltamirano/proyectoPokemon',
+      technologies: ['ASTRO', 'TYPESCRIPT', 'TAILWIND', 'REACT'],
+   },
+   {
+      title: 'Csgo React App',
+      year: 2022,
+      status: 'Desarrollo',
       description:
          'Aplicación web desarrollada con react y redux, inspirada en el juego Counter Strike la cual muestra la información sobre cada arma y mapa del juego. Las armas tienen un cargador interactivo con sonido reales de cada arma, adicionalmente cuenta con una lista de "Favoritos" la cual utiliza Redux como manejador de estado global.',
-      image: 'https://i.ibb.co/rFN2kKX/csgo-app.webp',
+      image: '/CsgoReactApp.webp',
       link: 'https://app-csgo.vercel.app/',
       github: 'https://github.com/jullaltamirano/app-csgo-hw',
       technologies: ['JAVASCRIPT', 'REACT', 'REDUX', 'TAILWIND'],
    },
    {
       title: 'Reaction Game App',
+      year: 2022,
+      status: 'Desarrollo',
       description: 'Juego desarrollado con Html, css y javascript vanilla para medir la reacción medida en ms, cuenta con un "Lowest Time" que te muestra el mejor tiempo en la sesión, el juego maneja errores al intentar clickear antes de tiempo.',
-      image: 'https://i.ibb.co/hVDTKDJ/reaction-app.webp',
+      image: '/ReactionGameApp.webp',
       link: 'https://reaction-app.vercel.app/',
       github: 'https://github.com/jullaltamirano/reaction-app',
       technologies: ['HTML', 'CSS', 'JAVASCRIPT'],
    },
-   // {
-   //    title: 'Pokemon App + API',
-   //    description:
-   //       'Aplicación web desarrollada con React y Redux, se encuentra conectada a una API propia desarrollada con "Express" y "PostgreSQL" la cual hace peticiones asíncronas a la API oficial de Pokémon, tiene un listado de pokemones, una busqueda asíncrona de un pokemon o id específico y cuenta con la opción de poder crear un pokémon personalizado',
-   //    image: '',
-   //    link: '',
-   //    github: 'https://github.com/jullaltamirano/proyectoPokemon',
-   //    technologies: ['JAVASCRIPT', 'CSS', 'REACT', 'REDUX', 'EXPRESS', 'POSTGRESQL'],
-   // },
 ];
 ---
 
 <section id='proyectos'>
    <div class='flex flex-col justify-center items-center px-8 py-14 md:px-32 sm:py-20 sm:px-16'>
       <h2 class='text-zinc-100 font-bold text-4xl mb-14'>PROYECTOS</h2>
-      <div class='grid grid-cols-2 gap-8 lg:gap-14 w-full'>
+      <div class='flex flex-wrap gap-8 w-full'>
          {
-            projects.map((pro) => (
-               <div class='col-span-2 lg:col-span-1 rounded-xl bg-zinc-800 w-full'>
+            projects.map(( pro ) => (
+               <div class='rounded-xl bg-zinc-800 max-w-[500px] mx-auto'>
                   <div class='group relative'>
-                     <img
-                        class='relative rounded-tl-xl rounded-tr-xl'
-                        src={pro.image}
-                        alt={pro.title}
-                     />
+                     <img class='relative rounded-tl-xl rounded-tr-xl' src={ pro.image } alt={ pro.title } />
                      <a
-                        href={pro.link}
+                        href={ pro.link }
                         target='_blank'
                         class='flex justify-center items-center absolute top-0 w-full h-full bg-black bg-opacity-50 rounded-tl-xl rounded-tr-xl opacity-0 transition duration-300 text-white font-semibold text-lg group-hover:opacity-100'>
-                        <TfiNewWindow className='mr-2' />
-                        Ver Demo
+                        <TfiNewWindow className='mr-2' />Ver Demo
                      </a>
                   </div>
                   <div class='p-4 sm:p-8 flex flex-col justify-between h-100'>
-                     <div class='flex flex-col'>
-                        <h4 class='text-teal-400 font-semibold text-xl sm:text-2xl'>{pro.title}</h4>
-                        <p class='text-white mt-5 mb-10 text-sm sm:text-base'>{pro.description}</p>
+                     <div class='flex flex-col flex-grow'>
+                        <h4 class='text-teal-400 font-semibold text-xl'>{ pro.title }</h4>
+                        <h6 class="text-sm text-zinc-500">{ pro.year }</h6>
+                        <p class='text-white mt-5 mb-10 text-sm'>{ pro.description }</p>
                      </div>
 
                      <div class='flex flex-col'>
                         <div class='flex mb-4 gap-2'>
-                           {pro.link && (
-                              <a href={pro.link}>
-                                 <TfiNewWindow className='text-white text-lg hover:scale-110 transition' />
-                              </a>
-                           )}
-                           {pro.github && (
-                              <a href={pro.github}>
-                                 <FaGithub className='text-white text-lg hover:scale-110 transition' />
-                              </a>
-                           )}
+                           { pro.link && ( <a href={ pro.link }><TfiNewWindow className='text-white text-lg hover:scale-110 transition' /></a> ) }
+                           { pro.github && ( <a href={ pro.github }><FaGithub className='text-white text-lg hover:scale-110 transition' /></a> ) }
                         </div>
                         <div class='flex gap-3 flex-wrap'>
-                           {pro.technologies.map((tech) => (
-                              <span class={`rounded border text-xs px-2 ${techStyles[tech]}`}>{tech}</span>
-                           ))}
+                           { pro.technologies.map(( tech ) => ( <span class={`rounded border text-xs px-2 ${ techStyles[ tech ] }`}>{ tech }</span> )) }
                         </div>
                      </div>
                   </div>
